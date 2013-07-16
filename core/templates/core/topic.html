@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+{% if topic %}
+    <a href="{% url 'core:home' %}">Back</a>
+    <table border="2">
+        <tr>
+            <td>
+            Topic info
+            </td>
+        </tr>
+    <tr><td><table border="1">
+        <tr>
+        <td>by <a href="/user/{{ topic.author }}/">{{ topic.author }}</td>
+        <td>Created: {{ topic.pub_date }}</td>
+        </tr>
+        <tr>
+        <td><h1>{{ topic.title }}</h1></td>
+            <td>{{ topic.description }}</td>
+        </tr>
+    </table></td></tr>
+        <tr>
+        <td>
+        Posts: {{ posts_list.count }} total
+        </td>
+        </tr>
+        <tr>
+        <td>
+            <table border="1">
+                {% for post in posts_list %}
+                    <tr>
+                        <h4>
+                        <td>by <a href="/user/{{ post.author }}/">{{ post.author }}</a>
+                        Date: {{ post.pub_date }}</td>
+                        </h4>
+                    </tr>
+                    <tr>
+                        <td>{{ post.content }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </td>
+        </tr>
+    </table>
+{% else %}
+    <p>No such topic exists.</p>
+{% endif %}
+
+</body>
+</html>

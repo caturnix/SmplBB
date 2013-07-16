@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+{% if latest_topics %}
+    <ul>
+    <table>
+    {% for topic in latest_topics %}
+        <tr>
+        <td><a href="{%  url 'core:topic' topic.id %}">{{ topic.title }}</a></td>
+        <td>by <a href="/user/{{ topic.author }}/">{{ topic.author }}</td>
+        </tr>
+    {% endfor %}
+    </ul>
+    </table>
+{% else %}
+    <p>No topics are available.</p>
+{% endif %}
+</body>
+</html>
