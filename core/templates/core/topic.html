@@ -24,13 +24,13 @@
     </table></td></tr>
         <tr>
         <td>
-        Posts: {{ posts_list.count }} total
+        Posts: {{ post_list.count }} total
         </td>
         </tr>
         <tr>
         <td>
             <table border="1">
-                {% for post in posts_list %}
+                {% for post in post_list %}
                     <tr>
                         <h4>
                         <td>by <a href="/user/{{ post.author }}/">{{ post.author }}</a>
@@ -49,5 +49,20 @@
     <p>No such topic exists.</p>
 {% endif %}
 
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'core:reply' topic.id %}" method="post">
+{% csrf_token %}
+    <table>
+        <tr>
+            <td>Type reply here:</td>
+        </tr>
+        <tr>
+            <td><input type="text" name="reply_content"/></td>
+        </tr>
+    </table>
+
+<input type="submit" value="Submit" />
+</form>
 </body>
 </html>

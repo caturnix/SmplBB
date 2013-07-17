@@ -12,4 +12,5 @@ urlpatterns = patterns('',
 
     url(r'^(?P<topic_id>\d+)/$', views.topic, name='topic'),
 
+    url(r'^(?P<topic_id>\d+)/reply/$', views.reply, name='reply'),
 )
