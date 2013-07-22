@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<a href="{% url 'core:home' %}">Back</a>
+<form action="{% url 'core:new_topic_create' %}" method="post">
+{% csrf_token %}
+<table border="2">
+    <tr>
+        <td>
+            Topic name:
+        </td>
+        <td>
+            <input type="text" name="new_topic_title">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Description:
+        </td>
+        <td>
+            <input type="text" name="new_topic_description">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="text" name="post_content">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="submit" value="Create topic">
+        </td>
+    </tr>
+</table>
+</form>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+</body>
+</html>

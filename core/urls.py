@@ -13,4 +13,8 @@ urlpatterns = patterns('',
     url(r'^(?P<topic_id>\d+)/$', views.topic, name='topic'),
 
     url(r'^(?P<topic_id>\d+)/reply/$', views.reply, name='reply'),
+
+    url(r'^new_topic/$', views.new_topic, name='new_topic'),
+
+    url(r'^new_topic/post/$', views.new_topic_create, name='new_topic_create'),
 )

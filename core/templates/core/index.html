@@ -5,19 +5,18 @@
 </head>
 <body>
 {% if latest_topics %}
-    <ul>
     <table>
     {% for topic in latest_topics %}
         <tr>
         <td><a href="{%  url 'core:topic' topic.id %}">{{ topic.title }}</a></td>
-        <td>by <a href="/user/{{ topic.author }}/">{{ topic.author }}</td>
+        <td>by <a href="/user/{{ topic.author }}/">{{ topic.author }}</a></td>
         </tr>
     {% endfor %}
-    </ul>
     </table>
 {% else %}
     <p>No topics are available.</p>
 {% endif %}
 
+<a href="{% url 'core:new_topic' %}">Create a new thread</a>
 </body>
 </html>
